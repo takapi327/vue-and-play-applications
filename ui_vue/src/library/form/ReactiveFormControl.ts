@@ -7,18 +7,19 @@ export class ReactiveFormControl {
 
   public errors: any[] = []
 
-  public reset() {
+  public reset(): void {
     this.value  = null
     this.errors = []
   }
 
-  public validate() {
+  public validate(): void {
     this.errors = []
+
     if (!this.validators || !this.validators.length) return;
+
     this.validators.forEach(validator => {
       const error = validator.call(this, this.value)
-      if (error != null) {
-        if (!this.errors) this.errors = []
+      if (error !== null) {
         this.errors.push(error)
       }
     })

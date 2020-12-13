@@ -9,7 +9,7 @@ export default class Validators {
 
       let result = null
 
-      if (min > 0 && (value === null || value.length < min)) {
+      if (min > 0 && value !== null && value.length < min) {
         result = 'Value too short!'
       }
 

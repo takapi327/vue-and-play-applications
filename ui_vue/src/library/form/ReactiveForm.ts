@@ -11,22 +11,27 @@ export default class ReactiveForm {
 
   public get errors() {
     let retval: any = {}
-    for (const key in this.controls) {
-      if (this.controls[key].errors != null) {
+
+    Object.keys(this.controls).map(key => {
+      if (this.controls[key].errors !== null) {
         retval[key] = this.controls[key].errors
       }
-    }
+    })
     return retval
   }
 
-  public get hasErrors() {
-    let retval: number = 0
+  public get hasErrors(): boolean {
+    let retval: boolean = true
 
-    for (const key in this.controls) {
-      if (this.controls[key].errors != null) {
-        retval += this.controls[key].errors.length
+    Object.keys(this.controls).map(key => {
+      if (this.controls[key].errors.length > 0) {
+        retval = true
+      } else {
+        retval = false
       }
-    }
+    })
+
     return retval
   }
+
 }

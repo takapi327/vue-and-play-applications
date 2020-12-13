@@ -1,8 +1,12 @@
 <template>
   <form>
-    <input v-model="formData.controls.name.value" type="text" />
+    <input v-model="formData.controls.name.value" type="text" v-on:keyup="name" />
+    <p v-if="formData.errors.name">{{ formData.errors.name[0] }}</p>
+
+    <input v-model="formData.controls.email.value" type="text" />
+    <p v-if="formData.errors.email">{{ formData.errors.email[0] }}</p>
   </form>
-  <button v-on:click="click">OK</button>
+  <button type="submit" :disabled="isInvalid">OK</button>
 </template>
 
 <script lang="ts">
@@ -20,7 +24,12 @@ export default defineComponent({
 
     formData.controls['name'] = new ReactiveFormControl(
       '',
-      [Validators.required, Validators.stringLength(3, 128)]
+      [Validators.required, Validators.stringLength(3, 5)]
+    )
+
+    formData.controls['email'] = new ReactiveFormControl(
+      '',
+      [Validators.required, Validators.stringLength(3, 5)]
     )
 
     return {
@@ -28,9 +37,16 @@ export default defineComponent({
     }
   },
 
+  data: () => {
+    return {
+      isInvalid: true,
+    }
+  },
+
   methods: {
-    click: function (event: any) {
-      console.log(this.formData.controls.name.value)
+    name: function (event: any) {
+      this.formData.validate();
+      this.isInvalid = this.formData.hasErrors
     }
   }
 })
