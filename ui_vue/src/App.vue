@@ -1,16 +1,21 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <!--
+    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  -->
+  <Step1/>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld          from './components/HelloWorld.vue'
+import Step1               from './components/chatRegister/membership/Step1.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    Step1
   }
 })
 </script>
