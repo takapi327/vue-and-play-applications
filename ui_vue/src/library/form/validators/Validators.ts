@@ -1,23 +1,23 @@
 export default class Validators {
 
-  static required(value: any) {
-    return !!value ? null : 'Required field!';
+  static required (value: any) {
+    return !!value ? null : 'Required field!'
   }
-  
-  static stringLength(min = 0, max = 0) {
-   return (value = '') => {
 
-     let result = null;
+  static stringLength (min = 0, max = 0) {
+    return (value = '') => {
 
-     if (min > 0 && (value === null || value.length < min)) {
-       result = 'Value too short!';
-     }
+      let result = null
 
-     if (max > 0 && value !== null && value.length > max) {
-       result = 'Value too long!';
-     }
+      if (min > 0 && (value === null || value.length < min)) {
+        result = 'Value too short!'
+      }
 
-     return result;
-   }
+      if (max > 0 && value !== null && value.length > max) {
+        result = 'Value too long!'
+      }
+
+      return result
+    }
   }
 }
