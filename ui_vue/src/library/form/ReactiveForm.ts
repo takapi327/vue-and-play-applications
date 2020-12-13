@@ -1,33 +1,32 @@
-import { ReactiveFormControl } from './ReactiveFormControl';
+import { ReactiveFormControl } from './ReactiveFormControl'
 
 export default class ReactiveForm {
-  public controls: ReactiveFormControl[] = [];
+  public controls: { [name: string]: ReactiveFormControl } = {}
 
   public validate() {
     for (const key in this.controls) {
-      this.controls[key].validate();
+      this.controls[key].validate()
     }
   }
 
   public get errors() {
     let retval: any = {}
-
     for (const key in this.controls) {
       if (this.controls[key].errors != null) {
-        retval[key] = this.controls[key].errors;
+        retval[key] = this.controls[key].errors
       }
     }
-    return retval;
+    return retval
   }
 
   public get hasErrors() {
-    let retval: number = 0;
+    let retval: number = 0
 
     for (const key in this.controls) {
       if (this.controls[key].errors != null) {
-        retval += this.controls[key].errors.length;
+        retval += this.controls[key].errors.length
       }
     }
-    return retval;
+    return retval
   }
 }
