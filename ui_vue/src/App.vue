@@ -7,13 +7,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import HelloWorld          from './components/HelloWorld.vue'
-import Step1               from './components/chatRegister/membership/Step1.vue'
+import { defineComponent    } from 'vue'
+import { ValidationProvider } from 'vee-validate'
+
+import HelloWorld             from './components/HelloWorld.vue'
+import Step1                  from './components/chatRegister/membership/Step1.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
+    //ValidationProvider,
     HelloWorld,
     Step1
   }
